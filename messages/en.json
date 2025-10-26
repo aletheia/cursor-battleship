@@ -1,0 +1,57 @@
+{
+  "game": {
+    "title": "BATTLESHIP",
+    "subtitle": "// COMBAT SYSTEM V2.077",
+    "subtitle2": "// INITIALIZE COMBAT SYSTEM",
+    "ships": {
+      "carrier": "Aircraft Carrier",
+      "battleship": "Battleship",
+      "cruiser": "Cruiser",
+      "submarine": "Submarine",
+      "destroyer": "Destroyer"
+    },
+    "status": {
+      "title": "SYSTEM STATUS",
+      "placeShips": "Place your ships",
+      "allPlaced": "All ships placed! Press \"Start Game\"",
+      "invalidPosition": "Invalid position! Try again",
+      "yourTurn": "Your turn! Click on the enemy grid to shoot",
+      "hit": "Hit!",
+      "miss": "Missed!",
+      "sunk": "Sunk!",
+      "enemyHit": "The enemy hit you!",
+      "enemyMiss": "The enemy missed. Your turn!",
+      "enemySunk": "The enemy sank your",
+      "victory": "// VICTORY DETECTED",
+      "defeat": "// SYSTEM COMPROMISED",
+      "youWon": "You won! All enemy ships sunk!",
+      "youLost": "You lost! All your ships are sunk!"
+    },
+    "setup": {
+      "title": "PLACE SHIPS",
+      "currentShip": "CURRENT SHIP:",
+      "allPlaced": "ALL PLACED",
+      "cells": "cells"
+    },
+    "fleet": {
+      "allied": "// ALLIED FLEET",
+      "enemy": "// ENEMY FLEET"
+    },
+    "buttons": {
+      "orientation": "ORIENTATION",
+      "horizontal": "HORIZONTAL →",
+      "vertical": "VERTICAL ↓",
+      "reset": "RESET",
+      "startGame": "// START COMBAT",
+      "newGame": "// NEW GAME"
+    },
+    "instructions": {
+      "title": "// SYSTEM INSTRUCTIONS",
+      "step1": "Click on the grid to place your ships",
+      "step2": "Use the \"Orientation\" button to rotate the ship",
+      "step3": "Once all ships are placed, press \"Start Game\"",
+      "step4": "During the game, click on the enemy grid to shoot",
+      "step5": "Sink all enemy ships to win!"
+    }
+  }
+}

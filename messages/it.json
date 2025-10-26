@@ -1,0 +1,57 @@
+{
+  "game": {
+    "title": "BATTAGLIA NAVALE",
+    "subtitle": "// SISTEMA DI COMBATTIMENTO V2.077",
+    "subtitle2": "// INIZIALIZZA SISTEMA DI COMBATTIMENTO",
+    "ships": {
+      "carrier": "Portaerei",
+      "battleship": "Corazzata",
+      "cruiser": "Incrociatore",
+      "submarine": "Sottomarino",
+      "destroyer": "Cacciatorpediniere"
+    },
+    "status": {
+      "title": "STATO SISTEMA",
+      "placeShips": "Posiziona le tue navi",
+      "allPlaced": "Tutte le navi posizionate! Premi \"Inizia Partita\"",
+      "invalidPosition": "Posizione non valida! Riprova",
+      "yourTurn": "Il tuo turno! Clicca sulla griglia nemica per sparare",
+      "hit": "Colpito!",
+      "miss": "Mancato!",
+      "sunk": "Affondato!",
+      "enemyHit": "Il nemico ti ha colpito!",
+      "enemyMiss": "Il nemico ha mancato. Il tuo turno!",
+      "enemySunk": "Il nemico ha affondato la tua",
+      "victory": "// VITTORIA RILEVATA",
+      "defeat": "// SISTEMA COMPROMESSO",
+      "youWon": "Hai vinto! Tutte le navi nemiche affondate!",
+      "youLost": "Hai perso! Tutte le tue navi sono affondate!"
+    },
+    "setup": {
+      "title": "POSIZIONA LE NAVI",
+      "currentShip": "NAVE CORRENTE:",
+      "allPlaced": "TUTTE POSIZIONATE",
+      "cells": "celle"
+    },
+    "fleet": {
+      "allied": "// FLOTTA ALLEATA",
+      "enemy": "// FLOTTA NEMICA"
+    },
+    "buttons": {
+      "orientation": "ORIENTAMENTO",
+      "horizontal": "ORIZZONTALE →",
+      "vertical": "VERTICALE ↓",
+      "reset": "RICOMINCIA",
+      "startGame": "// INIZIA COMBATTIMENTO",
+      "newGame": "// NUOVA PARTITA"
+    },
+    "instructions": {
+      "title": "// ISTRUZIONI SISTEMA",
+      "step1": "Clicca sulla griglia per posizionare le tue navi",
+      "step2": "Usa il bottone \"Orientamento\" per ruotare la nave",
+      "step3": "Una volta posizionate tutte le navi, premi \"Inizia Partita\"",
+      "step4": "Durante il gioco, clicca sulla griglia nemica per sparare",
+      "step5": "Affonda tutte le navi nemiche per vincere!"
+    }
+  }
+}
