@@ -1,0 +1,389 @@
+---
+description: Use this rule for all Markdown, MDX, and MDC files to enforce clear, consistent, and professional documentation standards
+globs: ["**/*.md", "**/*.mdx", "**/*.mdc"]
+alwaysApply: false
+---
+
+# Markdown Writing Rules (Markdownlint Compliant)
+
+## Document Structure
+
+### Required Elements
+
+- **Single H1**: Each document must have exactly one H1 (`#`) as the first heading
+- **Proper Heading Hierarchy**: Never skip heading levels  
+  (H1 → H2 → H3, not H1 → H3)
+- **Consistent Line Endings**: Use Unix-style line endings (LF, not CRLF)
+- **End with Newline**: Files must end with a single newline character
+
+### Line Length
+
+- Maximum line length: 120 characters for content
+- Exception: URLs, code blocks, and tables can exceed this limit
+- Use line breaks for readability in long paragraphs
+
+## Heading Rules
+
+### Heading Format
+
+- **ATX-style headings only**: Use `#` for headings, not underlines
+- **Space after hash**: Always include space after `#` (✅ `# Title`, ❌ `#Title`)
+- **No trailing punctuation**: Don't end headings with periods, colons, etc.
+- **Blank lines around headings**: One blank line before and after each heading
+- **No duplicate headings**: Each heading should be unique within the document
+
+### Heading Examples
+
+```markdown
+✅ Correct:
+
+# Document Title
+
+## Section Heading
+
+Content here.
+
+### Subsection
+
+More content.
+
+❌ Incorrect:
+
+#Document Title
+
+## Section Heading.
+
+Content here.
+###Subsection
+```
+
+## List Rules
+
+### Unordered Lists
+
+- **Consistent markers**: Use `-` for all unordered lists (not `*` or `+`)
+- **Proper indentation**: Use 2 spaces for nested lists
+- **Blank lines**: Add blank lines around lists (except in nested lists)
+- **Start at beginning**: Lists should start at the beginning of the line
+
+### Ordered Lists
+
+- **Sequential numbering**: Use `1.`, `2.`, `3.` (not all `1.`)
+- **Period after number**: Always use period, not parenthesis `1)`
+- **Consistent indentation**: Align text properly with first line
+
+### List Examples
+
+```markdown
+✅ Correct:
+
+- First item
+- Second item
+  - Nested item
+  - Another nested
+- Third item
+
+1. First step
+2. Second step
+3. Third step
+
+❌ Incorrect:
+
+- First item
+
+* Second item
+  - Wrong indent
+
+- Third item
+
+1. First step
+
+1) Second step
+1) Third step
+```
+
+## Code Rules
+
+### Inline Code
+
+- **Backticks**: Use single backticks for inline code
+- **No spaces**: No spaces inside backticks (✅ `code`, ❌ `code`)
+- **Escape backticks**: Use double backticks if code contains backticks
+
+### Code Blocks
+
+- **Fenced blocks**: Use triple backticks (\`\`\`) not indented blocks
+- **Language identifier**: Always specify language after opening backticks
+- **Blank lines**: Surround code blocks with blank lines
+- **No trailing spaces**: Remove trailing whitespace in code blocks
+
+### Code Examples
+
+````markdown
+✅ Correct:
+
+Use the `npm install` command.
+
+```javascript
+const example = "code";
+console.log(example);
+```
+````
+
+❌ Incorrect:
+
+Use the `npm install` command.
+
+```javascript
+const example = "code"; // Indented block
+console.log(example);
+```
+
+## Link Rules
+
+### Link Format
+
+- **No bare URLs**: Always use proper link syntax
+- **Descriptive text**: Use meaningful link text, not "click here"
+- **No spaces in URLs**: Use %20 or restructure if needed
+- **Reference-style for repeated links**: Use references for links used
+  multiple times
+
+### Link Examples
+
+```markdown
+✅ Correct:
+
+Check the [documentation](https://example.com/docs) for details.
+
+Visit the [API Reference][api-ref] for more info.
+
+[api-ref]: https://example.com/api
+
+❌ Incorrect:
+
+https://example.com/docs
+
+[Click here](https://example.com/docs) for documentation.
+
+[broken link](https://example.com/my docs)
+```
+
+## Emphasis Rules
+
+### Bold and Italic
+
+- **Consistent markers**: Use `**` for bold, `*` for italic
+- **No spaces**: No spaces inside emphasis markers
+- **Proper nesting**: Bold outside, italic inside when combining
+
+#### Emphasis Examples
+
+```markdown
+✅ Correct:
+
+This is **bold text** and this is _italic text_.
+
+This is **_bold and italic_** text.
+
+❌ Incorrect:
+
+This is **bold text** and this is _italic text_.
+
+This is ** bold text ** with spaces.
+```
+
+## Table Rules
+
+### Table Format
+
+- **Pipes and alignment**: Use pipes (`|`) with spaces for padding
+- **Header separator**: Use at least 3 hyphens per column
+- **Alignment markers**: Use `:` for alignment  
+  (`:---` left, `:---:` center, `---:` right)
+- **Consistent spacing**: Align columns for readability
+
+### Table Examples
+
+```markdown
+✅ Correct:
+
+| Header 1 | Header 2 | Header 3 |
+| -------- | :------: | -------: |
+| Left     |  Center  |    Right |
+| Data     |   Data   |     Data |
+
+❌ Incorrect:
+
+| Header 1  | Header 2 | Header 3 |
+| --------- | -------- | -------- |
+| Unaligned | Data     | Here     |
+| More      | Stuff    | Things   |
+```
+
+## Blockquote Rules
+
+- **Consistent markers**: Use `>` with space after
+- **Lazy continuation**: Can omit `>` for paragraph continuation
+- **Blank lines**: Separate blockquotes with blank lines
+
+### Blockquote Examples
+
+```markdown
+✅ Correct:
+
+> This is a blockquote.
+> It can span multiple lines.
+
+> Another quote here.
+
+❌ Incorrect:
+
+> No space after marker.
+> This is wrong.
+```
+
+## Image Rules
+
+- **Alt text required**: Always provide descriptive alt text
+- **Consistent format**: Use same format as links
+- **File references**: Use relative paths when possible
+
+### Image Examples
+
+```markdown
+✅ Correct:
+
+![Description of image](./images/example.png)
+
+![Company Logo](https://example.com/logo.png)
+
+❌ Incorrect:
+
+![](./images/example.png) // Missing alt text
+
+![ ](./images/example.png) // Empty alt text
+```
+
+## HTML Rules
+
+- **Avoid when possible**: Use Markdown syntax over HTML
+- **Allowed elements**: Only use HTML when Markdown can't achieve the result
+- **Self-closing tags**: Include the slash for self-closing tags
+- **No deprecated elements**: Don't use `<center>`, `<font>`, etc.
+
+## Whitespace Rules
+
+### Spaces
+
+- **No trailing spaces**: Remove all trailing whitespace
+- **No multiple spaces**: Use single spaces except in code blocks
+- **No hard tabs**: Use spaces for indentation (2 spaces standard)
+
+### Blank Lines
+
+- **Single blank lines**: Never use multiple consecutive blank lines
+- **Around blocks**: Use blank lines around headings, lists, code blocks
+- **Document boundaries**: No blank lines at start, single newline at end
+
+## File Naming
+
+- **Lowercase with hyphens**: Use `my-document.md` not `My_Document.md`
+- **Descriptive names**: Use clear, descriptive file names
+- **Consistent extensions**: Use `.md` for Markdown, `.mdx` for MDX
+
+## Anti-Patterns to Avoid
+
+### Don't
+
+- Mix heading styles (ATX and Setext)
+- Use HTML when Markdown suffices
+- Create inconsistent list markers
+- Skip heading levels
+- Use trailing spaces or multiple blank lines
+- Forget alt text for images
+- Use bare URLs without link syntax
+- End headings with punctuation
+- Mix emphasis styles (\*\* vs \_\_)
+
+### Do
+
+- Maintain consistent formatting throughout
+- Use proper Markdown syntax
+- Include descriptive link and image text
+- Follow proper heading hierarchy
+- Keep line lengths reasonable
+- Use reference-style links for repeated URLs
+- Add blank lines for readability
+- Validate with markdownlint
+
+## Markdownlint Configuration
+
+### Recommended .markdownlint.json
+
+```json
+{
+  "default": true,
+  "MD003": { "style": "atx" },
+  "MD004": { "style": "dash" },
+  "MD007": { "indent": 2 },
+  "MD013": { "line_length": 120 },
+  "MD024": { "allow_different_nesting": true },
+  "MD033": { "allowed_elements": ["br", "sup", "sub"] },
+  "MD035": { "style": "---" },
+  "MD046": { "style": "fenced" },
+  "MD048": { "style": "backtick" }
+}
+```
+
+## Validation
+
+### Before Committing
+
+- Run markdownlint on all Markdown files
+- Fix any reported issues
+- Verify proper rendering in preview
+- Check all links are valid
+- Ensure images have alt text
+
+### Common Markdownlint Rules
+
+- **MD001**: Heading levels should only increment by one level at a time
+- **MD003**: Heading style (ATX-style only)
+- **MD004**: Unordered list style (dash)
+- **MD005**: Consistent list indentation
+- **MD007**: Unordered list indentation (2 spaces)
+- **MD009**: No trailing spaces
+- **MD010**: No hard tabs
+- **MD012**: No multiple consecutive blank lines
+- **MD013**: Line length (120 characters)
+- **MD014**: Dollar signs used before commands without showing output
+- **MD018**: No space after hash on atx style heading
+- **MD019**: Multiple spaces after hash on atx style heading
+- **MD022**: Headings should be surrounded by blank lines
+- **MD023**: Headings must start at the beginning of the line
+- **MD024**: No duplicate headings
+- **MD025**: Single H1 heading
+- **MD026**: No trailing punctuation in heading
+- **MD027**: Multiple spaces after blockquote symbol
+- **MD028**: Blank line inside blockquote
+- **MD029**: Ordered list item prefix
+- **MD030**: Spaces after list markers
+- **MD031**: Fenced code blocks should be surrounded by blank lines
+- **MD032**: Lists should be surrounded by blank lines
+- **MD033**: No inline HTML
+- **MD034**: No bare URLs
+- **MD035**: Horizontal rule style
+- **MD036**: Emphasis used instead of a heading
+- **MD037**: No space in emphasis markers
+- **MD038**: Spaces in code span elements
+- **MD039**: No space in links
+- **MD040**: Fenced code blocks should have a language specified
+- **MD041**: First line in file should be a top level heading
+- **MD042**: No empty links
+- **MD043**: Required heading structure
+- **MD044**: Proper names should have correct capitalization
+- **MD045**: Images should have alternate text
+- **MD046**: Code block style (fenced)
+- **MD047**: Files should end with a single newline character
+- **MD048**: Code fence style (backtick)

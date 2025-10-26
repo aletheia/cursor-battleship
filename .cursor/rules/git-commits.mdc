@@ -1,0 +1,315 @@
+---
+description: Use this rule when creating git commits to ensure consistent commit message format with gitmoji
+globs: ["**/*.{ts,tsx,js,jsx,md,json,yml,yaml}"]
+alwaysApply: true
+---
+
+# Git Commit Rules
+
+## Commit Message Format
+
+### Required Structure
+
+```bash
+<gitmoji> <type>: <description>
+
+<detailed explanation>
+```
+
+### Gitmoji Usage
+
+Always start commits with appropriate gitmoji:
+
+- 🎨 **Improve structure/format of the code** - Code style, formatting, refactoring
+- ⚡️ **Improve performance** - Performance optimizations, speed improvements
+- 🔥 **Remove code or files** - Delete files, remove features, cleanup
+- 🐛 **Fix a bug** - Bug fixes, error corrections
+- 🚑️ **Critical hotfix** - Urgent fixes, security patches
+- ✨ **Introduce new features** - New functionality, features
+- 📝 **Add or update documentation** - Docs, README, comments
+- 🚀 **Deploy stuff** - Deployment, releases, builds
+- 💄 **Add or update UI and style files** - CSS, UI components, styling
+- 🎉 **Begin a project** - Initial commit, project setup
+- ✅ **Add, update, or pass tests** - Testing, test coverage
+- 🔒️ **Fix security issues** - Security fixes, vulnerability patches
+- 🔖 **Release/Version tags** - Version bumps, releases
+- 🚧 **Work in progress** - WIP, incomplete features
+- 💚 **Fix CI Build** - CI/CD fixes, build issues
+- ⬇️ **Downgrade dependencies** - Dependency downgrades
+- ⬆️ **Upgrade dependencies** - Dependency upgrades
+- 📌 **Pin dependencies to specific versions** - Lock dependency versions
+- 👽️ **Update code due to external API changes** - API updates, external changes
+- 🚚 **Move or rename resources** - File moves, renames, restructuring
+- 📄 **Add or update license** - License files, legal updates
+- 💥 **Introduce breaking changes** - Breaking changes, major updates
+- 🍱 **Add or update assets** - Images, icons, media files
+- ♿️ **Improve accessibility** - Accessibility improvements
+- 💡 **Add or update comments in source code** - Code comments, documentation
+- 🍻 **Write code drunkenly** - Fun commits, experimental code
+- 💬 **Add or update text and literals** - Text updates, string changes
+- 🗃️ **Perform database related changes** - Database changes, migrations
+- 🔊 **Add or update logs** - Logging, console output
+- 🔧 **Add or update configuration files** - Config files, settings
+- 🌐 **Add or update internationalization** - i18n, translations
+- ✏️ **Fix typos** - Typo corrections, spelling fixes
+- 🚀 **Add or update deployment scripts** - Deployment, CI/CD
+- 📈 **Add or update analytics or track code** - Analytics, tracking
+- ♻️ **Refactor code** - Code refactoring, restructuring
+- ➕ **Add a dependency** - Add new dependencies
+- ➖ **Remove a dependency** - Remove dependencies
+- 🔨 **Add or update development scripts** - Dev tools, scripts
+- 🌱 **Add or update seed files** - Seed data, initial data
+- 🎨 **Improve UI/UX** - User interface improvements
+- 🏗️ **Make architectural changes** - Architecture changes, structure
+- 📱 **Work on responsive design** - Mobile, responsive design
+- 🤡 **Mock things** - Mock data, testing mocks
+- 🚫 **Fix linter warnings** - Linting fixes, code style
+- 🩹 **Simple fix for a non-critical issue** - Minor fixes, quick patches
+- 🧐 **Add or update code comments** - Code documentation
+- ⚗️ **Perform experiments** - Experimental features, research
+- 🔍️ **Improve SEO** - Search engine optimization
+- 🏷️ **Add or update types** - TypeScript types, type definitions
+- 🌊 **Add or update animations and transitions** - Animations, motion
+- 💤 **Performance and structure improvements** - Performance, optimization
+- 🃏 **Add or update a test** - Test files, test coverage
+- 🎭 **Add or update the UI and UX** - UI/UX improvements
+- 🎪 **Fix an issue after a release** - Post-release fixes
+- 🎯 **Add or update code related to user targeting** - User targeting, personalization
+- 🎨 **Add or update code related to UI/UX** - UI/UX improvements
+- 🎭 **Add or update code related to user experience** - UX improvements
+- 🎪 **Add or update code related to user interface** - UI improvements
+
+### Commit Types
+
+Use conventional commit types:
+
+- **feat**: New feature
+- **fix**: Bug fix
+- **docs**: Documentation changes
+- **style**: Code style changes (formatting, missing semicolons, etc.)
+- **refactor**: Code refactoring
+- **perf**: Performance improvements
+- **test**: Adding or updating tests
+- **chore**: Maintenance tasks, dependencies, build processes
+- **ci**: CI/CD changes
+- **build**: Build system changes
+- **revert**: Revert previous commit
+
+### Description Rules
+
+- Use imperative mood ("add" not "added")
+- Keep first line under 50 characters
+- Start with lowercase letter
+- No period at the end
+- Be specific and descriptive
+
+### Detailed Explanation
+
+- Explain what and why, not how
+- Reference issues, pull requests, or discussions
+- Include breaking changes if applicable
+- List major changes or additions
+
+## Examples
+
+### Good Commits
+
+```bash
+✨ feat: add user authentication system
+
+- Implement JWT-based authentication
+- Add login/logout functionality
+- Include password reset capability
+- Fixes #123
+```
+
+```bash
+🐛 fix: resolve API rate limiting issue
+
+- Add exponential backoff for failed requests
+- Implement proper error handling for 429 responses
+- Update retry logic to respect rate limits
+- Closes #456
+```
+
+```bash
+📝 docs: update API documentation
+
+- Add missing endpoint examples
+- Include error response formats
+- Update authentication requirements
+- Improve code samples
+```
+
+### Bad Commits
+
+```bash
+update stuff
+```
+
+```bash
+fixed bug
+```
+
+```bash
+WIP
+```
+
+```bash
+changes
+```
+
+## Branch Naming
+
+### Feature Branches
+
+```bash
+feature/user-authentication
+feature/api-rate-limiting
+feature/dashboard-analytics
+```
+
+### Bug Fix Branches
+
+```bash
+fix/login-validation
+fix/api-timeout
+fix/memory-leak
+```
+
+### Hotfix Branches
+
+```bash
+hotfix/security-vulnerability
+hotfix/critical-bug
+hotfix/performance-issue
+```
+
+### Release Branches
+
+```bash
+release/v1.2.0
+release/v2.0.0-beta
+release/v1.1.1-patch
+```
+
+## Pull Request Guidelines
+
+### Title Format
+
+```bash
+<gitmoji> <type>: <description>
+```
+
+### Description Template
+
+```markdown
+## Description
+
+Brief description of changes
+
+## Type of Change
+
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Breaking change
+- [ ] Documentation update
+
+## Testing
+
+- [ ] Unit tests pass
+- [ ] Integration tests pass
+- [ ] Manual testing completed
+
+## Checklist
+
+- [ ] Code follows style guidelines
+- [ ] Self-review completed
+- [ ] Documentation updated
+- [ ] No console.log statements
+- [ ] No commented code
+```
+
+## Quality Gates
+
+### Before Committing
+
+- [ ] Code follows project style guidelines
+- [ ] Tests pass locally
+- [ ] No console.log or debug statements
+- [ ] No commented code
+- [ ] Meaningful commit message with gitmoji
+
+### Before Pushing
+
+- [ ] All commits follow message format
+- [ ] Branch is up to date with main
+- [ ] No merge conflicts
+- [ ] Code review completed (if required)
+
+## Common Patterns
+
+### Feature Development
+
+```bash
+git checkout -b feature/new-feature
+# Make changes
+git add .
+git commit -m "✨ feat: add new feature functionality
+
+- Implement core feature logic
+- Add unit tests for feature
+- Include error handling
+- Fixes #789"
+git push origin feature/new-feature
+```
+
+### Bug Fixes
+
+```bash
+git checkout -b fix/bug-description
+# Fix the bug
+git add .
+git commit -m "🐛 fix: resolve bug description
+
+- Fix the specific issue
+- Add regression test
+- Update documentation if needed
+- Closes #123"
+git push origin fix/bug-description
+```
+
+### Documentation Updates
+
+```bash
+git add docs/
+git commit -m "📝 docs: update project documentation
+
+- Add new API examples
+- Update installation instructions
+- Include troubleshooting guide
+- Improve code samples"
+```
+
+## Anti-Patterns to Avoid
+
+### Don't
+
+- Use generic commit messages like "update" or "fix"
+- Commit without gitmoji
+- Write commit messages in past tense
+- Include implementation details in commit message
+- Use abbreviations or unclear language
+- Commit incomplete work without WIP tag
+
+### Do
+
+- Use descriptive, specific commit messages
+- Always include appropriate gitmoji
+- Write in imperative mood
+- Focus on what and why, not how
+- Reference issues and pull requests
+- Keep commits atomic and focused
+
+  globs:
+  alwaysApply: true

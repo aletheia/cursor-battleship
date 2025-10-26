@@ -1,0 +1,276 @@
+---
+description: Use this rule when applying the Spec-Then-Code methodology for high-stakes development
+globs: "specs/**/*.md"
+alwaysApply: false
+---
+
+# Spec-Then-Code Development Rules
+
+## Overview
+
+Apply the Spec-Then-Code methodology for structured software development in high-stakes scenarios where quality cannot be compromised. This approach ensures thorough planning, comprehensive testing, and verified implementation.
+
+## When to Apply
+
+### Use Spec-Then-Code For
+
+- **Mission-critical features**: Payment processing, authentication, data integrity
+- **Complex algorithms**: Multi-step calculations, optimization problems
+- **System integrations**: Third-party APIs, microservice communication
+- **Compliance requirements**: GDPR, HIPAA, financial regulations
+- **Production bug fixes**: Issues affecting users, data corruption risks
+- **Architecture changes**: Database migrations, service restructuring
+
+### Use Simpler Approaches For
+
+- **UI tweaks**: Visual adjustments verifiable by eye
+- **Prototypes**: Quick proof-of-concepts
+- **Documentation**: README updates, comments
+- **Simple utilities**: Basic helper functions
+- **Low-risk experiments**: Feature flags, A/B tests
+
+## Methodology Workflow
+
+### 1. Specification Phase
+
+Before writing any code:
+
+- Document the problem comprehensively
+- Define all functional and non-functional requirements
+- Specify verification criteria (how to know it works)
+- Identify edge cases and failure modes
+- Set performance benchmarks if applicable
+
+### 2. Test Definition Phase
+
+Following TDD principles:
+
+- Write tests BEFORE implementation
+- Tests should initially fail (red phase)
+- Define unit tests for components
+- Create integration tests for interactions
+- Specify acceptance tests for requirements
+
+### 3. Implementation Phase
+
+With tests as guide:
+
+- Implement minimal code to pass tests
+- Follow specification exactly
+- Refactor only after tests pass
+- Maintain test coverage above 80%
+- Document any specification deviations
+
+### 4. Verification Phase
+
+Ensure completeness:
+
+- All tests passing
+- Specification requirements met
+- Edge cases handled
+- Performance benchmarks achieved
+- Security requirements validated
+
+## Integration with MCP Server
+
+Use the connected GitMCP server for spec-then-code prompts:
+
+```text
+@mcp_mosofsky_spec-then-code [command]
+```
+
+Available commands:
+
+- `create specification for [feature]`
+- `create test plan for [specification]`
+- `implement [component] from specification`
+- `verify completeness of [implementation]`
+
+## File Organization
+
+### Specification Files
+
+Store in `.spec/` directory:
+
+```text
+.spec/
+├── features/
+│   ├── authentication.md
+│   ├── payment-processing.md
+│   └── user-management.md
+├── bugs/
+│   ├── api-timeout-fix.md
+│   └── data-validation-issue.md
+└── refactoring/
+    ├── database-optimization.md
+    └── service-decomposition.md
+```
+
+### Test Structure
+
+Colocate tests with implementation:
+
+```text
+src/
+├── components/
+│   ├── Authentication/
+│   │   ├── Authentication.tsx
+│   │   ├── Authentication.test.tsx
+│   │   └── Authentication.spec.md
+```
+
+## Recursive Planning
+
+For complex tasks, apply recursively:
+
+1. If task feels too large, create sub-specification
+2. Each sub-spec gets own test suite
+3. Implement sub-components independently
+4. Integrate with verification at each level
+
+Example:
+
+```text
+Main: User Authentication System
+├── Sub-spec: JWT Token Management
+│   ├── Token generation tests
+│   ├── Token validation tests
+│   └── Token refresh tests
+├── Sub-spec: Role-Based Access
+│   ├── Role assignment tests
+│   ├── Permission checking tests
+│   └── Role hierarchy tests
+└── Sub-spec: Session Management
+    ├── Session creation tests
+    ├── Session validation tests
+    └── Session cleanup tests
+```
+
+## Context Window Management
+
+For projects exceeding AI context:
+
+1. Maintain specification as external memory
+2. Reference specific sections when implementing
+3. Update spec with implementation decisions
+4. Use spec for session continuity
+
+## Quality Gates
+
+### Before Starting Implementation
+
+- [ ] Specification reviewed and complete
+- [ ] All requirements clearly defined
+- [ ] Verification criteria established
+- [ ] Tests written and failing
+
+### During Implementation
+
+- [ ] Following specification exactly
+- [ ] Running tests continuously
+- [ ] Documenting any deviations
+- [ ] Maintaining code coverage
+
+### Before Completion
+
+- [ ] All tests passing
+- [ ] Specification requirements met
+- [ ] Code reviewed for quality
+- [ ] Documentation updated
+- [ ] Performance validated
+
+## Anti-Patterns to Avoid
+
+### Don't
+
+- Start coding without specification
+- Write tests after implementation
+- Skip test-writing for "simple" features
+- Ignore edge cases in high-risk code
+- Modify specs without updating tests
+
+### Do
+
+- Always start with clear requirements
+- Write tests that define success
+- Cover edge cases comprehensively
+- Verify against specification continuously
+- Keep specs as living documents
+
+## Project Integration
+
+Combine with other project rules:
+
+- Apply `@typescript` rules for type safety
+- Follow `@project` conventions
+- Use `@security` guidelines for sensitive features
+- Reference `@specs-and-user-stories` for documentation
+
+## Performance Considerations
+
+When performance is critical:
+
+1. Define benchmarks in specification
+2. Write performance tests first
+3. Profile before optimizing
+4. Verify optimizations don't break functionality
+5. Document performance characteristics
+
+## Security Requirements
+
+For security-sensitive features:
+
+1. Include threat model in specification
+2. Write security-focused tests
+3. Implement defense in depth
+4. Verify against OWASP guidelines
+5. Document security decisions
+
+## Example Application
+
+```typescript
+// Specification: User authentication with JWT
+// Location: .spec/features/authentication.md
+
+// Step 1: Write failing tests
+describe("JWT Authentication", () => {
+  it("should generate valid JWT token on login", () => {
+    // Test implementation
+  });
+
+  it("should validate JWT token on protected routes", () => {
+    // Test implementation
+  });
+
+  it("should refresh token before expiration", () => {
+    // Test implementation
+  });
+});
+
+// Step 2: Implement to pass tests
+export class JWTAuthService {
+  // Implementation following specification
+}
+
+// Step 3: Verify completeness
+// - All tests passing ✓
+// - Specification requirements met ✓
+// - Edge cases handled ✓
+// - Security validated ✓
+```
+
+## Continuous Improvement
+
+After each spec-then-code cycle:
+
+1. Review what worked well
+2. Identify specification gaps
+3. Update templates for common patterns
+4. Share learnings with team
+5. Refine verification criteria
+
+## References
+
+- Methodology source: <https://github.com/mosofsky/spec-then-code>
+- TDD principles: Robert C. Martin's Clean Code
+- GitMCP integration: <https://gitmcp.io/mosofsky/spec-then-code>

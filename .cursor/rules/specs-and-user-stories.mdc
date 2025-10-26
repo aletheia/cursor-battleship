@@ -1,0 +1,200 @@
+---
+description: Use this rule when creating specifications and user stories for the project
+globs: ["**/*.md", "**/*.mdx"]
+alwaysApply: true
+---
+
+# Specs and User Stories Development Rules
+
+## Specification Rules
+
+### Document Structure
+
+- **Title**: Clear, descriptive title with "Specification" suffix
+- **Overview**: 2-3 sentence summary with key architectural decisions
+- **Core Features**: Numbered list of main functional areas
+- **Architecture Section**: Cross-entity design, integration points, data flow
+- **Data Structure Section**: TypeScript interfaces, validation rules, cross-references
+- **Implementation Section**: Performance benchmarks, security requirements, testing strategy
+
+### Content Requirements
+
+- Cross-entity architecture patterns
+- Real-time synchronization requirements
+- Performance benchmarks with specific metrics (real-time updates: 500ms, status propagation: 1s, dashboard loading: 2-3s)
+- Security and compliance requirements (AES-256 encryption, role-based access, audit logging)
+- Integration points with other platform sections
+- Error handling and failure scenarios
+- Scalability considerations
+
+### Writing Style
+
+- Use present tense for current state, future tense for planned features
+- Be specific and measurable, avoid vague terms like "fast" or "secure"
+- Include concrete examples and use cases
+- Use markdown headers, code blocks for TypeScript, bullet points for lists
+- Number sections for easy reference, include cross-references
+
+## User Story Rules
+
+### Story Structure
+
+```markdown
+# User Story: [Descriptive Title]
+
+## Story ID
+
+[CATEGORY]-[NUMBER] (e.g., AK-001)
+
+## Title
+
+As a [user type], I want [capability] so that [benefit]
+
+## Description
+
+[2-3 paragraph detailed explanation]
+
+## User Value
+
+- **Benefit 1**: [Specific value proposition]
+- **Benefit 2**: [Specific value proposition]
+- **Benefit 3**: [Specific value proposition]
+
+## Acceptance Criteria
+
+[Detailed, testable requirements]
+
+## Definition of Done
+
+[Clear completion criteria]
+```
+
+### Story ID Convention
+
+- **Format**: `[CATEGORY]-[NUMBER]`
+- **Categories**: AK (API Keys), PL (Prompt Library), PG (Playground), TC (Token Calculator), AUTH (Authentication), UI (User Interface)
+- **Numbering**: Sequential from 001 with leading zeros
+
+### Acceptance Criteria Structure
+
+- **Functional Requirements**: Core functionality, edge cases, error scenarios, integration
+- **UI/UX Requirements**: Interface specs, UX requirements, accessibility, mobile responsiveness
+- **Performance Requirements**: Response time benchmarks, throughput, resource limits, scalability
+- **Security Requirements**: Authentication/authorization, data protection, audit/compliance, vulnerability prevention
+- **Integration Requirements**: Cross-section functionality, external systems, API compatibility, data sync
+
+### Definition of Done
+
+- All acceptance criteria met
+- Performance benchmarks achieved
+- Security requirements validated
+- Integration testing completed
+- User acceptance testing passed
+- Documentation updated
+- Code review, unit tests, integration tests, performance tests, security tests, accessibility tests all passing
+
+## Cross-Entity Architecture Rules
+
+### Provider Management
+
+- Single source of truth for provider information
+- Automatic distribution to all platform sections
+- Real-time synchronization across sections (500ms or less)
+- Consistent provider experience everywhere
+- Immediate status propagation with cross-section consistency
+
+### Data Flow Patterns
+
+- WebSocket or Server-Sent Events for immediate updates
+- Event-driven architecture for status changes
+- Pub/sub pattern for cross-section communication
+- Optimistic updates with conflict resolution
+- Eventual consistency model with conflict detection
+
+### Integration Patterns
+
+- Shared data models across sections
+- Event-driven status updates
+- Consistent UI patterns and behaviors
+- Unified error handling and user feedback
+- Webhook support for notifications, API-first design
+
+## Implementation Guidelines
+
+### Development Workflow
+
+1. **Must Have (MVP)**: Core functionality first
+2. **Should Have**: Enhanced user experience
+3. **Could Have**: Advanced features
+4. **Nice to Have**: Future enhancements
+
+### Dependency Management
+
+- Identify story dependencies upfront
+- Implement foundational stories first
+- Coordinate cross-section development
+- Regular dependency reviews and updates
+
+### Testing Strategy
+
+- **Unit Tests**: Individual components and functions
+- **Integration Tests**: Cross-section functionality
+- **Performance Tests**: Benchmark validation
+- **Security Tests**: Vulnerability assessment
+- **User Acceptance Tests**: End-to-end workflows
+- Minimum 80% code coverage, all tests must pass
+
+## Quality Assurance Rules
+
+### Review Process
+
+- All code reviewed by at least one team member
+- Security-sensitive code requires security review
+- Performance-critical code requires performance review
+- Cross-section changes require integration review
+- Specifications reviewed by architecture team, user stories by product team
+
+### Performance Validation
+
+- Automated performance tests for all benchmarks
+- Load testing for scalability validation
+- Stress testing for failure scenarios
+- Performance regression detection
+- Real-time monitoring with automated alerts
+
+### Security Validation
+
+- Automated vulnerability scanning
+- Penetration testing for critical features
+- Security code review for all changes
+- Compliance validation for regulatory requirements
+- Real-time security monitoring with threat detection
+
+## Rule Compliance Checklist
+
+### Before Creating Specifications
+
+- Review existing cross-entity patterns
+- Define performance benchmarks
+- Identify security requirements
+- Plan integration points
+- Establish testing strategy
+
+### Before Creating User Stories
+
+- Follow story ID convention
+- Include all required sections
+- Define clear acceptance criteria
+- Set measurable completion criteria
+- Identify dependencies and blockers
+
+### Before Implementation
+
+- Validate story dependencies
+- Confirm performance requirements
+- Verify security requirements
+- Plan testing approach
+- Coordinate cross-section development
+
+  globs:
+  alwaysApply: true

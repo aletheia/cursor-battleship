@@ -1,0 +1,261 @@
+---
+description: Use this rule when creating or modifying Cursor rules to ensure proper MDC format and structure
+globs: ["**/*.mdc", ".cursor/rules/**/*"]
+alwaysApply: true
+---
+
+# Cursor Rules Development Guidelines
+
+## MDC File Structure
+
+### Required Header Format
+
+Every Cursor rule file must have a properly formatted header section:
+
+```yaml
+---
+description: Clear, concise description of when to use this rule
+globs: Array of file patterns the rule applies to
+alwaysApply: Boolean indicating if rule should always be active
+---
+```
+
+### Header Components
+
+#### Description
+
+- **Required**: Must be present in every rule
+- **Format**: Single line describing when and why to use the rule
+- **Style**: Use imperative mood ("Use this rule when...")
+- **Length**: Keep under 120 characters for readability
+- **Examples**:
+  - ✅ "Use this rule when working with TypeScript files"
+  - ✅ "Use this rule for AWS infrastructure development"
+  - ❌ "This rule helps with typescript"
+  - ❌ "Rule for typescript"
+
+#### Globs
+
+- **Required**: Must specify file patterns
+- **Format**: Array of glob patterns in quotes
+- **Patterns**: Use standard glob syntax with proper escaping
+- **Examples**:
+  - ✅ `["**/*.{ts,tsx}"]` - All TypeScript files
+  - ✅ `["**/*.md", "**/*.mdx"]` - All markdown files
+  - ✅ `["src/**/*.{ts,tsx,js,jsx}"]` - Source files only
+  - ❌ `*.ts` - Missing quotes and brackets
+  - ❌ `["**/*.ts"]` - Single pattern should still be array
+
+#### AlwaysApply
+
+- **Required**: Must specify boolean value
+- **Values**: `true` or `false`
+- **Usage**:
+  - `true`: Rule applies to all matching files automatically
+  - `false`: Rule must be manually activated for specific contexts
+- **Examples**:
+  - ✅ `alwaysApply: true` - Always active for matching files
+  - ✅ `alwaysApply: false` - Manually activated only
+  - ❌ `alwaysApply: "true"` - String instead of boolean
+  - ❌ `alwaysApply:` - Missing value
+
+## File Naming Conventions
+
+### Rule File Names
+
+- **Format**: `kebab-case.mdc`
+- **Extension**: Always use `.mdc` (not `.md`)
+- **Examples**:
+  - ✅ `typescript.mdc`
+  - ✅ `git-commits.mdc`
+  - ✅ `api-keys.mdc`
+  - ❌ `typescript.md`
+  - ❌ `TypeScript.mdc`
+  - ❌ `typescript_rules.mdc`
+
+### Directory Structure
+
+- **Location**: Place all rules in `.cursor/rules/`
+- **Organization**: Group related rules logically
+- **Examples**:
+  - `.cursor/rules/typescript.mdc`
+  - `.cursor/rules/aws.mdc`
+  - `.cursor/rules/security.mdc`
+
+## Content Structure
+
+### Rule Content Format
+
+After the header, structure your rule content with:
+
+1. **Title**: Clear, descriptive title with H1 (`#`)
+2. **Overview**: Brief explanation of the rule's purpose
+3. **Guidelines**: Numbered or bulleted list of rules
+4. **Examples**: Code examples or usage patterns
+5. **Anti-patterns**: What to avoid
+6. **References**: Links to documentation or related resources
+
+### Content Guidelines
+
+- **Markdown**: Use proper markdown syntax
+- **Headers**: Use appropriate heading levels (H1, H2, H3)
+- **Code Blocks**: Use triple backticks with language specification
+- **Lists**: Use consistent list formatting
+- **Examples**: Provide practical, real-world examples
+
+## Validation Checklist
+
+### Before Creating/Updating a Rule
+
+- [ ] Header section is properly formatted
+- [ ] Description is clear and concise
+- [ ] Globs array contains valid patterns
+- [ ] AlwaysApply is boolean (true/false)
+- [ ] File extension is `.mdc`
+- [ ] File is in `.cursor/rules/` directory
+- [ ] Content follows markdown best practices
+- [ ] Examples are practical and relevant
+
+### Header Validation
+
+```yaml
+# ✅ Valid Header
+---
+description: Use this rule when working with TypeScript files
+globs: ["**/*.{ts,tsx}"]
+alwaysApply: false
+---
+
+# ❌ Invalid Headers
+---
+description: TypeScript rules
+globs: *.ts
+alwaysApply: "true"
+---
+
+---
+description:
+globs: []
+alwaysApply:
+---
+```
+
+## Common Patterns
+
+### TypeScript/JavaScript Rules
+
+```yaml
+---
+description: Use this rule when working with TypeScript/JavaScript files
+globs: ["**/*.{ts,tsx,js,jsx}"]
+alwaysApply: false
+---
+```
+
+### Documentation Rules
+
+```yaml
+---
+description: Use this rule when creating or updating documentation
+globs: ["**/*.md", "**/*.mdx", "docs/**/*"]
+alwaysApply: true
+---
+```
+
+### Configuration Rules
+
+```yaml
+---
+description: Use this rule when modifying configuration files
+globs: ["**/*.{json,yml,yaml,config.js,config.ts}"]
+alwaysApply: false
+---
+```
+
+### Project-Specific Rules
+
+```yaml
+---
+description: Use this rule when working on this specific project
+globs: ["**/*"]
+alwaysApply: true
+---
+```
+
+## Anti-Patterns to Avoid
+
+### Don't
+
+- Use `.md` extension instead of `.mdc`
+- Omit the header section entirely
+- Use string values for `alwaysApply`
+- Use single glob patterns without array brackets
+- Create overly broad glob patterns (`**/*`)
+- Write vague or unclear descriptions
+- Place rules outside `.cursor/rules/` directory
+
+### Do
+
+- Always include the header section
+- Use `.mdc` extension
+- Provide clear, actionable descriptions
+- Use appropriate glob patterns for the rule's scope
+- Set `alwaysApply` based on rule purpose
+- Follow consistent naming conventions
+- Test glob patterns to ensure they match intended files
+
+## Testing Your Rules
+
+### Validation Steps
+
+1. **Syntax Check**: Ensure YAML header is valid
+2. **Glob Test**: Verify patterns match intended files
+3. **Cursor Integration**: Test rule activation in Cursor IDE
+4. **File Coverage**: Confirm rule applies to correct file types
+5. **Performance**: Avoid overly broad glob patterns
+
+### Example Validation
+
+```bash
+# Test glob pattern
+find . -name "*.ts" | head -5
+
+# Check file structure
+ls -la .cursor/rules/
+
+# Validate YAML syntax
+yaml-lint .cursor/rules/your-rule.mdc
+```
+
+## Rule Maintenance
+
+### Regular Review
+
+- Review rules quarterly for relevance
+- Update glob patterns if project structure changes
+- Refine descriptions based on team feedback
+- Remove obsolete or conflicting rules
+- Ensure rules don't overlap unnecessarily
+
+### Version Control
+
+- Commit rule changes with descriptive messages
+- Use gitmoji for rule-related commits
+- Document rule changes in commit messages
+- Tag rule versions if needed for major changes
+
+## Integration with Other Rules
+
+### Rule Dependencies
+
+- Identify rules that work together
+- Avoid conflicting rule definitions
+- Use consistent terminology across rules
+- Reference related rules when appropriate
+
+### Rule Hierarchy
+
+- General rules should have broader scope
+- Specific rules should have narrow scope
+- Use `alwaysApply: false` for specialized rules
+- Use `alwaysApply: true` for foundational rules
